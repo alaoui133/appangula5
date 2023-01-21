@@ -1,0 +1,10 @@
+
+
+<button type="button" class="btn" [ngClass]="{
+    'btn-primary': isfavorite,
+    'btn-success':!isfavorite
+}"
+[ngStyle]="{
+    'font-size':isfavorite ? '40px':'20px'
+}"
+ (click)="myfavorite()">Primary</button>

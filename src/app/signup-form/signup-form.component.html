@@ -1,0 +1,45 @@
+<!--REACTIVE FORM                   form.controls=f()    -->>
+<form [formGroup]="form" (ngSubmit)="submit(form)"  >
+    <div class="form-group">
+        <label for="">Username</label>
+        <input
+          formControlName="username"
+          class="form-control"
+          type="text"
+           ngModel name="username">
+        <div class="alert alert-danger " *ngIf="f().username.invalid && f().username.touched" >
+            <div *ngIf="f()['username'].errors?.['required']">username is required</div>
+            <div *ngIf="f()['username'].errors?.['minlength']">username must have atleast {{form.controls['username'].errors?.['minlength'].requiredLength}} </div>
+            <div *ngIf="f()['username'].errors?.['cannotContainSpace']">username mustn't have space</div>
+        </div>  
+    </div>
+
+    <div class="form-group">
+        <label for="">Password</label>
+        <input 
+        formControlName="password"
+        class="form-control" 
+        ngModel type="password"
+        name="password" >
+        <div class="alert alert-danger " *ngIf="f().password.invalid && f().password.touched" >
+            <div *ngIf="f()['password'].errors?.['required']">username is required</div>
+            <div *ngIf="f()['password'].errors?.['minlength']">username must have atleast {{f()['password'].errors?.['minlength'].requiredLength}}/{{f()['password'].errors?.['minlength'].actualLength}} </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" >Signup</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</form>
+<p>{{form.value|json}}</p>
